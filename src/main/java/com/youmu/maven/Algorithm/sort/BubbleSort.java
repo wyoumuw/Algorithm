@@ -4,7 +4,7 @@ public class BubbleSort implements Sortable{
 
 	public static void main(String[] args) {
 		int[] arr = { 3, 2, 4, 5, 6, 2, 5, 6, 8, 1, 7 };
-		new BubbleSort().sort(arr,Operator.LOW);
+		new BubbleSort().sort(arr);
 		for (int i : arr) {
 			System.out.print(i + " ");
 		}
@@ -17,10 +17,10 @@ public class BubbleSort implements Sortable{
 		raw[j] = bak;
 	}
 
-	public void sort(int[] arr,Operator op) {
+	public void sort(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 1; j < arr.length - i; j++) {
-				if (Operator.compare(arr[j],arr[j - 1],op))
+				if (arr[j]<arr[j - 1])
 					swap(arr, j, j - 1);
 			}
 		}

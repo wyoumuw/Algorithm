@@ -7,8 +7,19 @@ import java.util.Arrays;
  */
 public class BinarySearch {
 
+    public int recurrenceFind(int[] a,int ele){
+        return recurrenceFind(a,0,a.length-1,ele);
+    }
 
-    public static int recurrenceFind(int[] a,int start,int end,int ele){
+    /**
+     *
+     * @param a
+     * @param start
+     * @param end included
+     * @param ele
+     * @return
+     */
+    private int recurrenceFind(int[] a,int start,int end,int ele){
         int len=end-start+1;
         if(len<=0){
             return -1;
@@ -20,24 +31,7 @@ public class BinarySearch {
             return start+len/2;
         }
     }
-
-
-    public static void main(String[] args) {
-        int[] arr = { 3, 2, 4, 5, 6, 2, 5, 6, 8, 1, 7 };
-        Arrays.sort(arr);
-        printArr( arr);
-
-        int find=8;
-        int re=recurrenceFind(arr,0,arr.length-1,find);
-        System.out.println("recurrenceFind find:"+find+" index:"+re+" ele:"+arr[re]);
-        re=foreachFind(arr,find);
-        System.out.println("foreachFind find:"+find+" index:"+re+" ele:"+arr[re]);
-
-    }
-
-
-
-    public static int foreachFind(int[] a,int ele){
+    public int foreachFind(int[] a,int ele){
        int start=0;
        int end=a.length-1;
        int len=0;
@@ -53,12 +47,5 @@ public class BinarySearch {
            }
        }
        return -1;
-    }
-
-    public static void printArr(int[] arr){
-        for (int i : arr) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
     }
 }
