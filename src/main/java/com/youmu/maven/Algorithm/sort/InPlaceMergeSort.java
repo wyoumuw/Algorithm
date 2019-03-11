@@ -7,7 +7,7 @@ import java.util.Random;
  * Created by wyoumuw on 2019/3/8.
  */
 public class InPlaceMergeSort implements Sortable {
-    public void sort(int[] arr, Operator op) {
+    public void sort(int[] arr) {
         mainMergeSort(arr, 0, arr.length / 2 + 1, arr.length);
     }
 
@@ -65,7 +65,7 @@ public class InPlaceMergeSort implements Sortable {
         Sortable.print(a);
         System.out.println();
 //        int a[] = {80, 20, 30};
-        new InPlaceMergeSort().sort(a, null);
+        new InPlaceMergeSort().sort(a);
         Sortable.print(a);
         System.out.println();
         Arrays.sort(a);
