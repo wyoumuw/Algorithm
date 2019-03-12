@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- * Created by dehua.lai on 2017/6/15.
+ * Created by YOUMU on 2017/6/15.
  */
 public class SearchTest extends BaseSearchTest{
 	@Test

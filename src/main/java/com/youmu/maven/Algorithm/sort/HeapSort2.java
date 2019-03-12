@@ -1,7 +1,7 @@
 package com.youmu.maven.Algorithm.sort;
 
 /**
- * @Author: YLBG-LDH-1506
+ * @Author: YOUMU
  * @Description: 看算法上标记的时间复杂度得知，其时间复杂度是nlogn+nlogn=2nlogn=O(nlogn)
  * @Date: 2019/03/11
  */
