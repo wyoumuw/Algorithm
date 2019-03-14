@@ -2,12 +2,16 @@ package com.youmu.maven.Algorithm;
 
 import com.youmu.maven.Algorithm.sort.BubbleSort;
 import com.youmu.maven.Algorithm.sort.HeapSort;
+import com.youmu.maven.Algorithm.sort.HeapSort;
+import com.youmu.maven.Algorithm.sort.HeapSort2;
 import com.youmu.maven.Algorithm.sort.MergeSort;
 import com.youmu.maven.Algorithm.sort.QuickSort;
 import org.junit.Test;
 
+import java.util.Random;
+
 /**
- * Created by dehua.lai on 2017/5/22.
+ * Created by YOUMU on 2017/5/22.
  */
 public class SortTest extends BaseSortTest {
 
@@ -28,6 +32,13 @@ public class SortTest extends BaseSortTest {
     public void heapTest() throws Exception {
         long start = System.nanoTime();
         new HeapSort().sort(getA());
+        print(getA());
+    }
+
+    @Test
+    public void heap2Test() throws Exception {
+        long start = System.nanoTime();
+        new HeapSort2().sort(getA());
         print(getA());
     }
 

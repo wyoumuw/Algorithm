@@ -5,13 +5,14 @@ import org.junit.Before;
 import java.util.Random;
 
 /**
- * Created by dehua.lai on 2017/5/22.
+ * Created by YOUMU on 2017/5/22.
  */
 public class BaseSortTest  {
     public int[] a;
     @Before
     public void setUp(){
-        a= getRandomArray(20);
+        int arrLen=new Random().nextInt(20);
+        a= getRandomArray(arrLen);
         System.out.println("before sort");
         print(a);
         System.out.println("after sort");

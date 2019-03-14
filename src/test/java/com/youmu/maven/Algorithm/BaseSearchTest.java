@@ -5,7 +5,7 @@ import org.junit.Before;
 import java.util.Random;
 
 /**
- * Created by dehua.lai on 2017/6/15.
+ * Created by YOUMU on 2017/6/15.
  */
 public abstract class BaseSearchTest {
 	public int[] a;
