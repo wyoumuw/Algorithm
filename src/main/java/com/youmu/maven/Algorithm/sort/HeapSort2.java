@@ -2,7 +2,7 @@ package com.youmu.maven.Algorithm.sort;
 
 /**
  * @Author: YOUMU
- * @Description: 看算法上标记的时间复杂度得知，其时间复杂度是nlogn+nlogn=2nlogn=O(nlogn)
+ * @Description: 看算法上标记的时间复杂度得知，其时间复杂度是n+nlogn=2nlogn=O(nlogn)
  * @Date: 2019/03/11
  */
 public class HeapSort2 implements Sortable {
@@ -22,7 +22,16 @@ public class HeapSort2 implements Sortable {
         }
     }
 
-    // 自底向上建堆 O(nlogn)
+    // 自底向上建堆 O(n) 这里一开始认为是nlogn，但是被大神提醒是n的就自己算了一下
+    //  假设 堆为满二叉树,节点个数n,节点所在的节点离树根x,那么树的高度为h=logn 这里树的每一层有2^(x-1)个节点，每个节点要向下查找子堆h-x，一层节耗费的时间是(h-x)(2^(x-1))=h2^(x-1)+x2^(x-1)
+    // 那E（x=h...1）(h-x)(2^(x-1))  =  0*2^(h-1) + 2^(h-2) + 2*2^(h-3) + 3*2^(h-4)....(h-1) * 2^0
+    //  等差数列*等比数列 = 错位相减法
+    // s =         0*2^(h-1) + 2^(h-2) + 2*2^(h-3) + 3*2^(h-4)....(h-2)*2^1 +(h-1) * 2^0 ①
+    // 2s = 0*2^h + 2^(h-1) + 2*2^(h-2) + 3*2^(h-3)..............(h-1)*2^1 ②
+    // ①-②
+    // s-2s=  (h-1) - (2^(h-1) + 2^(h-2)+2^(h-3)+2^(h-4) ....+2^1) =(h-1) -  2*(1-2^(h-1))/(1-2)
+    // s=(2*(1-2^(h-1))/(1-2) - h + 1 = 2^h-2-h+1=2^h -h- 1
+    // 带入h=log(2)(n)  s = n- log(2)(n) -1 = O(n)
     private void buildHeap(int[] arr, int len) {
         // 循环所有也不会出错
         // for (int i = len - 1; i >= 0; i--) {
