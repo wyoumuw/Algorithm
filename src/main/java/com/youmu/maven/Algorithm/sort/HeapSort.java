@@ -32,24 +32,15 @@ public class HeapSort implements Sortable {
             return;
         }
         int left=root*2+1,right=(root+1)*2;
-        boolean isSwaped=false;
-        if(left>len-1){
-            //遍历到叶子了
-            return;
+        int max=-1;
+        if(left<len&&arr[root]<arr[left]){
+            max=left;
         }
-        if(arr[root]<arr[left]){
-            swap(arr,root,left);
-            isSwaped=true;
+        if(right<len&&arr[root]<arr[right]){
+            max=right;
         }
-        if(right>len-1){
-            //遍历到叶子了
-            return;
-        }
-        if(arr[root]<arr[right]){
-            swap(arr,root,right);
-            isSwaped=true;
-        }
-        if(isSwaped){
+        if(-1!=max){
+            Sortable.swap(arr, max, root);
             up(arr,root);
         }
         heapify(arr,len,left);
