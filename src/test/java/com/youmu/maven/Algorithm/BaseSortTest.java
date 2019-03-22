@@ -11,7 +11,8 @@ public class BaseSortTest  {
     public int[] a;
     @Before
     public void setUp(){
-        int arrLen=new Random().nextInt(20);
+//        int arrLen=new Random().nextInt(1000);
+        int arrLen= 10;
         a= getRandomArray(arrLen);
         System.out.println("before sort");
         print(a);
@@ -27,7 +28,7 @@ public class BaseSortTest  {
         int[] arr=new int[length];
         Random r=new Random();
         for (int i = 0; i < arr.length; i++) {
-            arr[i]=r.nextInt(16);
+            arr[i]=r.nextInt(10000);
         }
         return arr;
     }

@@ -1,14 +1,12 @@
 package com.youmu.maven.Algorithm;
 
 import com.youmu.maven.Algorithm.sort.BubbleSort;
-import com.youmu.maven.Algorithm.sort.HeapSort;
+import com.youmu.maven.Algorithm.sort.TenBucketSort;
 import com.youmu.maven.Algorithm.sort.HeapSort;
 import com.youmu.maven.Algorithm.sort.HeapSort2;
 import com.youmu.maven.Algorithm.sort.MergeSort;
 import com.youmu.maven.Algorithm.sort.QuickSort;
 import org.junit.Test;
-
-import java.util.Random;
 
 /**
  * Created by YOUMU on 2017/5/22.
@@ -46,6 +44,13 @@ public class SortTest extends BaseSortTest {
     public void mergeTest() throws Exception {
         long start = System.nanoTime();
         new MergeSort().sort(getA());
+        print(getA());
+    }
+
+    @Test
+    public void bucketTest() throws Exception {
+        long start = System.nanoTime();
+        new TenBucketSort().sort(getA());
         print(getA());
     }
 }
