@@ -1,6 +1,7 @@
 package com.youmu.maven.Algorithm;
 
 import com.youmu.maven.Algorithm.sort.BubbleSort;
+import com.youmu.maven.Algorithm.sort.RangedBucketSort;
 import com.youmu.maven.Algorithm.sort.TenBucketSort;
 import com.youmu.maven.Algorithm.sort.HeapSort;
 import com.youmu.maven.Algorithm.sort.HeapSort2;
@@ -51,6 +52,13 @@ public class SortTest extends BaseSortTest {
     public void bucketTest() throws Exception {
         long start = System.nanoTime();
         new TenBucketSort().sort(getA());
+        print(getA());
+    }
+
+    @Test
+    public void rangeBucketTest() throws Exception {
+        long start = System.nanoTime();
+        new RangedBucketSort().sort(getA());
         print(getA());
     }
 }
