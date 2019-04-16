@@ -1,7 +1,6 @@
 package com.youmu.maven.Algorithm.sort;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: YOUMU
@@ -11,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  *               每次循环对arr中每一个数获取其对应位数(i)上的数字，直接放入桶中，然后循环把桶里的数据放入原数组arr中，此时完成一次排序
  *               上面做完一次循环arr的数据会变得有序一点，位数少的会在前面，位数多的在后面。位数小的在前面，位数大的在后面
  *               个位-十位-百位....一次循环位数上的数变得有顺序，虽然后面的循环会破坏其原有顺序，不过他们"其实内部已经有序了"
- *               时间复杂度 ？？？？？？？？？？？？？？？？？ <br >
+ *               时间复杂度 O(k*n)? k是最大数字的长度 <br >
  *               ps:这个方法排序负数会有问题
  * @Date: 2019/03/22
  */
@@ -24,26 +23,26 @@ public class TenBucketSort implements Sortable {
         // 记录每个桶里装有多少大小
         int[] bucketContent = new int[10];
         // 初始化桶的内容
-        Arrays.fill(bucketContent, -1);
+        Arrays.fill(bucketContent, 0);
         int maxIndex = indexOfMax(arr);
         int maxLen = numberLenInBase(arr[maxIndex]);
-        for (int i = 0; i < maxLen; i++) {
+        // O(n)?
+        for (int i = 0; i < maxLen+1; i++) {
+            // O(n)
             for (int j = 0; j < len; j++) {
                 int numberBitInBase = getNumberBitInBase(arr[j], i + 1);
-                buckets[numberBitInBase][++bucketContent[numberBitInBase]] = arr[j];
+                buckets[numberBitInBase][bucketContent[numberBitInBase]++] = arr[j];
             }
-            int bc = 0;
-            for (int j = 0; j < len; j++) {
-                if (-1 == bucketContent[bc]) {
-                    // 是空桶
-                    // 走下一个桶
-                    bc++;
-                    // 还原一下场景
-                    j--;
-                    continue;
+            // 这里会执行len次赋值 也就是时间复杂度是O(N)
+            int arrIndex=0;
+            for (int j = 0; j < buckets.length; j++) {
+                // 把桶的数据放回数组
+                for (int k = 0; k < bucketContent[j]; k++) {
+                    arr[arrIndex++]=buckets[j][k];
                 }
-                arr[j] = buckets[bc][bucketContent[bc]--];
             }
+            // 清空所有桶
+            Arrays.fill(bucketContent, 0);
         }
     }
 
