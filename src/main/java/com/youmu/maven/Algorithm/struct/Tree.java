@@ -1,9 +1,6 @@
 package com.youmu.maven.Algorithm.struct;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by wyoumuw on 2019/3/30.
@@ -35,6 +32,27 @@ public class Tree<T> {
         return result;
     }
 
+    public void minMemTraversal(List<T> result) {
+        // create a stack
+        Deque<TreeNode<T>> stack = new ArrayDeque<TreeNode<T>>();
+        addLeftChildren(root, stack);
+        while (!stack.isEmpty()) {
+            TreeNode<T> node = stack.pop();
+            result.add(node.ele);
+            if (null != node.right) {
+                addLeftChildren(node.right, stack);
+            }
+        }
+    }
+
+    private void addLeftChildren(TreeNode<T> root, Deque<TreeNode<T>> stack) {
+        if (null == root) {
+            return;
+        }
+        stack.push(root);
+        addLeftChildren(root.left, stack);
+    }
+
     private void levelTraversal0(List<T> result, TreeNode<T> root) {
         if (null == root) {
             return;
@@ -50,7 +68,7 @@ public class Tree<T> {
         if (0 == size) {
             return;
         }
-        for (int i = 0; i < size; i++) {
+        while (!queue.isEmpty()) {
             TreeNode<T> tTreeNode = queue.poll();
             if (null != tTreeNode.left) {
                 queue.offer(tTreeNode.left);
@@ -60,7 +78,6 @@ public class Tree<T> {
             }
             result.add(tTreeNode.ele);
         }
-        levelTraversal1(result, queue, root);
     }
 
     /**

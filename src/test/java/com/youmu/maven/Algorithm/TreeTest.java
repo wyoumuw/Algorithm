@@ -3,6 +3,9 @@ package com.youmu.maven.Algorithm;
 import com.youmu.maven.Algorithm.struct.Tree;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by wyoumuw on 2019/3/30.
  */
@@ -32,6 +35,14 @@ public class TreeTest {
         System.out.println(tree.traversal(Tree.TraversalType.LEVEL));
     }
 
+    @Test
+    public void level2TraversalTest() {
+        Tree tree = makeTree2();
+        List list = new ArrayList();
+        tree.minMemTraversal(list);
+        System.out.println(list);
+    }
+
 
     //            A
     //      B|         |C
@@ -50,6 +61,22 @@ public class TreeTest {
         tree.root.left.left.right = new Tree.TreeNode('I');
         tree.root.left.right.right = new Tree.TreeNode('J');
         tree.root.right.left.right = new Tree.TreeNode('K');
+        return tree;
+    }
+
+    //            5
+    //      2|         |6
+    //   1|   |4         |7
+    //      3|
+    public static Tree<Character> makeTree2() {
+        Tree tree = new Tree();
+        tree.root = new Tree.TreeNode('5');
+        tree.root.left = new Tree.TreeNode('2');
+        tree.root.right = new Tree.TreeNode('6');
+        tree.root.left.left = new Tree.TreeNode('1');
+        tree.root.left.right = new Tree.TreeNode('4');
+        tree.root.left.right.left = new Tree.TreeNode('3');
+        tree.root.right.right = new Tree.TreeNode('7');
         return tree;
     }
 }
