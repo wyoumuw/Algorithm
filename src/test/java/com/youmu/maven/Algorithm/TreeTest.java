@@ -1,6 +1,7 @@
 package com.youmu.maven.Algorithm;
 
 import com.youmu.maven.Algorithm.struct.Tree;
+import com.youmu.maven.Algorithm.utils.TreeUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,6 +44,19 @@ public class TreeTest {
         System.out.println(list);
     }
 
+    @Test
+    public void printTest() throws Exception {
+        TreeUtils.printTree(makeTree());
+    }
+    @Test
+    public void print2Test() throws Exception {
+        TreeUtils.printTree(makeTree2());
+    }
+    @Test
+    public void print3Test() throws Exception {
+        TreeUtils.printTree(makeTree3());
+    }
+
 
     //            A
     //      B|         |C
@@ -77,6 +91,22 @@ public class TreeTest {
         tree.root.left.right = new Tree.TreeNode('4');
         tree.root.left.right.left = new Tree.TreeNode('3');
         tree.root.right.right = new Tree.TreeNode('7');
+        return tree;
+    }
+
+    //            5111
+    //      2|         |6
+    //   11|   |4         |72432
+    //   33333|
+    public static Tree<String> makeTree3() {
+        Tree<String> tree = new Tree<>();
+        tree.root = new Tree.TreeNode<>("5111");
+        tree.root.left = new Tree.TreeNode<>("2");
+        tree.root.right = new Tree.TreeNode<>("6");
+        tree.root.left.left = new Tree.TreeNode<>("11");
+        tree.root.left.right = new Tree.TreeNode<>("4");
+        tree.root.left.right.left = new Tree.TreeNode<>("33333");
+        tree.root.right.right = new Tree.TreeNode<>("72432");
         return tree;
     }
 }

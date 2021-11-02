@@ -13,6 +13,23 @@ public class Tree<T> {
 
     public TreeNode<T> root;
 
+    public boolean isEmpty() {
+        return null == root;
+    }
+
+    public int heightOfTree() {
+        return heightOfTree(root);
+    }
+
+    private int heightOfTree(TreeNode<T> node) {
+        if (null == node) {
+            return 0;
+        }
+        int leftHeight = heightOfTree(node.left);
+        int rightHeight = heightOfTree(node.right);
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+
     public List<T> traversal(TraversalType type) {
         List<T> result = new LinkedList<T>();
         switch (type) {

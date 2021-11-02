@@ -1,0 +1,60 @@
+{
+  "headers": [
+    "id",
+    "select_type",
+    "table",
+    "partitions",
+    "type",
+    "possible_keys",
+    "key",
+    "key_len",
+    "ref",
+    "rows",
+    "filtered",
+    "Extra"
+  ],
+  "values": [
+    [
+      1,
+      "PRIMARY",
+      "World",
+      null,
+      "ALL",
+      null,
+      null,
+      null,
+      null,
+      5,
+      33.33,
+      "Using where"
+    ],
+    [
+      2,
+      "UNION",
+      "World",
+      null,
+      "ALL",
+      null,
+      null,
+      null,
+      null,
+      5,
+      33.33,
+      "Using where"
+    ],
+    [
+      null,
+      "UNION RESULT",
+      "<union1,2>",
+      null,
+      "ALL",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "Using temporary"
+    ]
+  ]
+}

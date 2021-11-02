@@ -14,4 +14,12 @@ public final class StringUtils {
         }
         return stringBuilder.toString();
     }
+
+    public static String repeat(char c, int repeat) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < repeat; i++) {
+            stringBuilder.append(c);
+        }
+        return stringBuilder.toString();
+    }
 }
